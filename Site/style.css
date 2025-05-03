@@ -1,4 +1,12 @@
-.imgtopo {
-size: 5cm;
-
+body {
+background-image: url('https://criticalhits.com.br/wp-content/uploads/2024/05/god-of-war-ragnarok-video-ps5-fe.webp');
+background-repeat: no-repeat;
+height: 100vh; 
+background-position: right bottom;
+}
+body img {
+    width: 250px;
+    height: auto;
+    display: flex;
+    align-content: center;
 }
