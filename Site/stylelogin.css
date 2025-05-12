@@ -1,0 +1,94 @@
+*{
+    font-family: "Cinzel", serif;
+}
+
+.linklogo img{
+width: 250px;
+height: auto;
+align-items: center;
+}
+body {
+    background-image: url(/Imagens\ para\ site/Backgroundeditado.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgb(20, 24, 87);
+}
+nav {
+    display:flex;
+     justify-content: center;
+}
+
+.conteiner {
+    color: white;
+background-color: rgba(0, 0, 0, 0.6);
+padding:  70px;
+padding-top: 30px;
+padding-bottom: 230px;
+width: 250px;
+height: 270px;
+border-radius: 36px;
+border-style: solid;
+border-color: white;
+border-width: 1px;
+}
+#divlogin.conteiner {
+    height: 150px;
+}
+.conteiner h2 {
+    display: flex;
+   justify-content: center;
+}
+.conteiner input {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.65);
+    color: white;
+  padding: 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 0.5px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.conteiner button {
+    color: black;
+    font-size:x-large;
+background-color: #c1c1c1;
+padding: 10px;
+border-radius: 36px;
+ border-style: solid;
+ justify-content: center;
+}
+.conteiner button:hover {
+    color: white;
+background-color: #c1c1c1;
+border:1.5px;
+border-color: white;
+padding: 10px;
+border-radius: 36px;
+ align-items: right;
+ border-style: solid;
+}
+.conteiner select {
+color: rgba(255, 255, 255, 0.664);
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 2px;
+    border-radius: 5px;
+}
+a {
+    color: #ffff;
+    text-decoration: none;
+}
+a:visited {
+color: white;
+}
+a:hover {
+  text-decoration: underline;
+}
+.conteudo-geral {
+  
+  display: flex;
+  justify-content: center; /* centraliza horizontalmente */
+  align-items: center;     /* centraliza verticalmente */
+          /* altura total da tela */
+  margin: 0;  
+}

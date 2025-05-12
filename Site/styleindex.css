@@ -1,35 +1,40 @@
 body {
     background-image: url(/Imagens\ para\ site/Backgroundeditado.svg);
     background-repeat: no-repeat;
+    background-size: cover;
     background-color: black;
-    overflow-x: hidden;
-    color: white;
+    
 }
 nav img {
+    background-color: aqua;
 width:250px;
-align-items: center;
+    justify-content: center;
 }
 .entrar {
-    border: 25x;
-    border-style:solid;
-    position: absolute;
+font-size: xx-large;
     padding-top:  5px;
     padding-left: 60px;
     padding-right: 60px;
     
 }
 .criar {
-    border: 25x;
-    border-style:solid;
-    position: absolute;
+ font-size: xx-large;
     padding-top:  5px;
     padding-left: 60px;
     padding-right: 60px;
 }
 .container {
     width: 400px;
-    background-color: rgb(255, 255, 255);
     padding: 50px;
     flex: auto;
 }
+body a{
 
+color: #fff;
+text-decoration: none;
+}
+body a:hover{
+
+color: #ebaf2e;
+text-decoration: underline;
+}
