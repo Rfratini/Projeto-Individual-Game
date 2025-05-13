@@ -22,8 +22,8 @@ nav {
 .conteiner {
     color: white;
 background-color: rgba(0, 0, 0, 0.6);
-padding:  70px;
-padding-top: 30px;
+padding:  60px;
+padding-top: 10px;
 padding-bottom: 230px;
 width: 250px;
 height: 270px;
@@ -90,6 +90,21 @@ a:hover {
   display: flex;
   justify-content: center; /* centraliza horizontalmente */
   align-items: center;     /* centraliza verticalmente */
-          /* altura total da tela */
+          
   margin: 0;  
+}
+.conteiner a{
+display: flex;
+justify-content: center;
+}
+.botoes {
+display: flex;
+width: 70%;
+margin-left: auto;
+margin-right: auto;
+justify-content: center;
+    flex-direction: column;
+    margin-top: 10%;
+    margin-bottom: 10;
+    
 }

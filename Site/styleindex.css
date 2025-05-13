@@ -2,11 +2,17 @@ body {
     background-image: url('../Imagens\ para\ site/Backgroundeditado.svg');
     background-repeat: no-repeat;
     background-size: cover;
+    overflow-x: hidden;
     background-color: black;
-    
+    height: 446px;
+
+}
+nav{
+display: flex;
+justify-content: center;
 }
 nav img {
-    background-color: aqua;
+    
 width:250px;
     justify-content: center;
 }
@@ -24,9 +30,13 @@ font-size: xx-large;
     padding-right: 60px;
 }
 .container {
-    width: 400px;
-    padding: 50px;
-    flex: auto;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80%;
+    justify-content: center;
 }
 body a{
 
