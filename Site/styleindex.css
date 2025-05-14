@@ -48,3 +48,9 @@ body a:hover{
 color: #ebaf2e;
 text-decoration: underline;
 }
+.options-menu {
+    display: flex;
+    flex-direction: column ;
+    justify-content: Justify;
+    align-self: center;
+}
