@@ -1,10 +1,14 @@
+*{
+    font-family: "Cinzel", serif;
+}
 body {
     background-image: url('../Imagens\ para\ site/Backgroundeditado.svg');
     background-repeat: no-repeat;
     background-size: cover;
     overflow-x: hidden;
+    overflow-y: hidden;
     background-color: black;
-    height: 446px;
+    height: 773px;
 
 }
 nav{
@@ -13,12 +17,12 @@ justify-content: center;
 }
 nav img {
     
-width:250px;
+width:350px;
     justify-content: center;
 }
 .entrar {
 font-size: xx-large;
-    padding-top:  5px;
+    padding-top:  10%;
     padding-left: 60px;
     padding-right: 60px;
     
@@ -52,5 +56,14 @@ text-decoration: underline;
     display: flex;
     flex-direction: column ;
     justify-content: Justify;
-    align-self: center;
+    align-items: center;
+    font-size: xx-large;
+     line-height: 0.7;
+}
+.options-menu #sair{
+color: #f8d17d;
+text-decoration: underline;
+}
+.options-menu #sair:hover{
+    color: #b87f06;
 }

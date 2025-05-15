@@ -1,36 +1,72 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criar conta</title>
     <link rel="stylesheet" href="stylelogin.css">
 </head>
+
 <body>
     <nav>
-       <a class="linklogo" href="index.html"> <img src="../Imagens para site/Logo gow ragnarok.png" alt=""> </a>
+        <a class="linklogo" href="index.html"> <img src="../Imagens para site/Logo gow ragnarok.png" alt=""> </a>
 
     </nav>
-<div class="conteudo-geral">
-    <div class="conteiner">
+    <div class="conteudo-geral">
+        <div class="conteiner">
 
-        <h2>Cadastro</h2>
-     Username:<br>
-     <input type="text" id="ipt_username" placeholder="Crie um nome de usuário"><br>
-     Email:<br>
-     <input type="text" id="ipt_email" placeholder="nome@email.com"><br>
-     Senha: <br>
-     <input type="password" id="ipt_senha" placeholder="insira sua senha" ><br>
-     Confirmar senha:<br>
-     <input type="password" id="ipt_senha2" placeholder="insira sua senha" ><br>
-     Gênero:<br>
-     <select id="Genero">
-        <option value="0">Selecione</option>
-        <option value="M">Masculino</option>
-        <option value="H">Feminino</option>
-     </select><br><br>
-     <button>Criar conta</button>
-     </div>
-     </div>
+            <h2>Cadastro</h2>
+            Username:<br>
+            <input type="text" id="ipt_username" placeholder="Crie um nome de usuário"><br>
+            Email:<br>
+            <input type="email" id="ipt_email" placeholder="nome@email.com"><br>
+            Senha: <br>
+            <input type="password" id="ipt_senha" placeholder="insira sua senha"><br>
+            Confirmar senha:<br>
+            <input type="password" id="ipt_senha2" placeholder="insira sua senha"><br>
+            Gênero:<br>
+
+            <select id="Genero">
+                <option value="0">Selecione</option>
+                <option value="M">Masculino</option>
+                <option value="F">Feminino</option>
+            </select><br><br>
+            <button onclick="cadastrar()" class="botoes" id="btcadastrar">Criar conta</button>
+        </div>
+    </div>
 </body>
+
 </html>
+<style>
+    #btcadastrar.botoes {
+        margin-top: 0;
+    }
+</style>
+<script>
+    var senha = '';
+    var email = '';
+    var nome = '';
+    var sexo = '';
+    function cadastrar() {
+
+        if (ipt_username.value == '' || ipt_email.value == '' || ipt_senha.value == '' || ipt_senha2.value == '' || Genero.value == '0') {
+            alert('Preencha todos os campos')
+        } else {
+            if (ipt_senha.value != ipt_senha2.value) {
+                alert('As senhas não coincidem!')
+            } else {
+                senha = ipt_senha.value;
+                email = ipt_email.value;
+                nome = ipt_username.value;
+            }
+            if (Genero.value == 'M') {
+                sexo = 'Masculino';
+            } else if (Genero.value == 'F') {
+                sexo = 'Feminino';
+            }
+        }
+    }
+
+
+</script>
