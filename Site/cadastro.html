@@ -18,13 +18,13 @@
 
             <h2>Cadastro</h2>
             Username:<br>
-            <input type="text" id="ipt_username" placeholder="Crie um nome de usuário"><br>
+            <input type="text" id="ipt_username" placeholder="Crie um nome de usuário" maxlength="20"><br>
             Email:<br>
-            <input type="email" id="ipt_email" placeholder="nome@email.com"><br>
+            <input type="email" id="ipt_email" placeholder="nome@email.com" maxlength="45"><br>
             Senha: <br>
-            <input type="password" id="ipt_senha" placeholder="insira sua senha"><br>
+            <input type="password" id="ipt_senha" placeholder="insira sua senha" maxlength="20"><br>
             Confirmar senha:<br>
-            <input type="password" id="ipt_senha2" placeholder="insira sua senha"><br>
+            <input type="password" id="ipt_senha2" placeholder="insira sua senha" maxlength="20" required><br>
             Gênero:<br>
 
             <select id="Genero">
@@ -47,7 +47,7 @@
     var senha = '';
     var email = '';
     var nome = '';
-    var sexo = '';
+    var genero = '';
     function cadastrar() {
 
         if (ipt_username.value == '' || ipt_email.value == '' || ipt_senha.value == '' || ipt_senha2.value == '' || Genero.value == '0') {
@@ -59,12 +59,13 @@
                 senha = ipt_senha.value;
                 email = ipt_email.value;
                 nome = ipt_username.value;
-            }
+            
             if (Genero.value == 'M') {
-                sexo = 'Masculino';
+                genero = 'Masculino';
             } else if (Genero.value == 'F') {
-                sexo = 'Feminino';
+                genero = 'Feminino';
             }
+        }
         }
     }
 
