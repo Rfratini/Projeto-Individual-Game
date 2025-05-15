@@ -3,12 +3,13 @@
 }
 
 .linklogo img{
-width: 350px;
+    margin-top: 10%;
+width: 400px;
 height: auto;
 align-items: center;
 }
 body {
-    background-image: url('../Imagens\ para\ site/Backgroundeditado.svg');
+    background-image: url('../Imagens\ para\ site/Background-index.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-color: black;

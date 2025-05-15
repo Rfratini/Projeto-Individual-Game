@@ -2,7 +2,7 @@
     font-family: "Cinzel", serif;
 }
 body {
-    background-image: url('../Imagens\ para\ site/Backgroundeditado.svg');
+    background-image: url('../Imagens\ para\ site/Background-index.png');
     background-repeat: no-repeat;
     background-size: cover;
     overflow-x: hidden;
@@ -17,21 +17,37 @@ justify-content: center;
 }
 nav img {
     
-width:350px;
+width:400px;
     justify-content: center;
 }
 .entrar {
-font-size: xx-large;
-    padding-top:  10%;
-    padding-left: 60px;
-    padding-right: 60px;
-    
+  color: white;
+  font-size: 35px;
+  text-align: center;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(228, 132, 23, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  padding: 2px 40px;
+  width: fit-content;
+  backdrop-filter: blur(2px); 
+  margin-top: 10%;
 }
 .criar {
- font-size: xx-large;
-    padding-top:  5px;
-    padding-left: 60px;
-    padding-right: 60px;
+  color: white;
+  font-size: 35px;
+  text-align: center;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(228, 132, 23, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  padding: 2px 40px;
+  width: fit-content;
+  backdrop-filter: blur(2px); 
 }
 .container {
     width: 100%;
