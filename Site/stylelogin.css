@@ -99,8 +99,8 @@ a:hover {
 .conteudo-geral {
   
   display: flex;
-  justify-content: center; /* centraliza horizontalmente */
-  align-items: center;     /* centraliza verticalmente */
+  justify-content: center; 
+  align-items: center;    
           
   margin: 0;  
 }
