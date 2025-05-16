@@ -1,7 +1,7 @@
 create database projetoGow;
 use projetoGow;
 
-create table usuario 
+create table if not exists usuario 
 (
 idusuario int primary key auto_increment,
 username varchar(20) not null,
