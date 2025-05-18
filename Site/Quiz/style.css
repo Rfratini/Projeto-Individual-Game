@@ -17,16 +17,31 @@
     --new-black: #212427;
     --new-white: #E8E8E8;
 }
-
+nav {
+    background-color: black;
+}
+nav img {
+    width:400px;
+    justify-content: center;
+}
 body {
-    color: var(--new-black);
-    background-color: var(--new-white);
+    color: var(--new-white);
+    background-color: rgba(0, 0, 0, 0.959);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: flex;
+    justify-content: center;
+    height: 773px;
 }
 
 button {
-    font-family: monospace;
-    font-weight: bold;
+     color: black;
+    font-size:x-large;
+background-color: #c1c1c1;
+padding: 6px;
+border-radius: 36px;
+ border-style: solid;
+ justify-content: center;
+  box-shadow: 0 4px #999;
 }
 
 .flex-colunar {
@@ -39,11 +54,12 @@ button {
 }
 
 .border-primary {
-    border: 3px solid var(--primary-brand-color);
+    border: 3px solid var(--new-white);
 }
 
 .border-secondary {
-    border: 3px solid var(--secondary-brand-color);
+    border: 1px solid var(--new-white);
+    border-radius: 5px;
 }
 
 .padding-8 {
