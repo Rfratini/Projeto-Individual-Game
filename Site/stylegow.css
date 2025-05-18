@@ -1,0 +1,86 @@
+ * {
+    color: #fff;
+    margin: 0%;
+ }
+ .container {
+    margin: 5%;
+
+ }
+ .container img {
+    justify-content: center;
+ }
+ body{
+    background-color: #212427;
+ }
+ nav{
+    background-color: black;
+display: flex;
+justify-content: center;
+margin: 0px;
+}
+nav img {
+width:400px;
+    justify-content: center;
+}
+.Personagens img {
+    width: 140px;
+   
+}
+.Personagens {
+    margin-left: 8%;
+    margin-right: 8%;
+    display: flex;
+    justify-content: space-between;
+}
+.estrutura img {
+    justify-content: center;
+}
+.introducao p {
+    justify-content: justify;
+} 
+.card { 
+    border-radius: 8px;
+   padding: 10px;
+    background-color: #a64d0d;
+      position: relative;
+  width: 50%;
+}
+.card:hover .overlay {
+     width: 100%;
+
+}
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #a64d0d;
+  overflow: hidden;
+  width: 0;
+  height: 100%;
+  transition: .5s ease;
+  border-radius: 14px;
+}
+#kratos3 img  {
+    height: 80%;
+    margin-top:30%;
+    display: block;
+ 
+}
+#hercules img {
+    margin-top: 50%;
+}
+#pandora img {
+    margin-top: 50%;
+}
