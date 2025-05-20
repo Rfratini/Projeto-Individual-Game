@@ -4,7 +4,7 @@
  }
  .container {
     margin: 5%;
-
+margin-top: 10vh;
  }
  .container img {
     justify-content: center;
@@ -14,9 +14,12 @@
  }
  nav{
     background-color: black;
+    margin-top: -10vh;
 display: flex;
 justify-content: center;
-margin: 0px;
+width: 100%;
+position: fixed;
+z-index: 10;
 }
 nav img {
 width:400px;
@@ -38,14 +41,36 @@ width:400px;
 .introducao p {
     justify-content: justify;
 } 
-.card { 
+.card3 { 
     border-radius: 8px;
    padding: 10px;
     background-color: #a64d0d;
       position: relative;
   width: 50%;
 }
-.card:hover .overlay {
+.card3:hover .overlay {
+     width: 100%;
+
+}
+.card4 { 
+    border-radius: 8px;
+   padding: 10px;
+    background-color:#8b1615;
+      position: relative;
+  width: 50%;
+}
+.card4:hover .overlay {
+     width: 100%;
+
+}
+.card5 { 
+    border-radius: 8px;
+   padding: 10px;
+    background-color: #336ba5;
+      position: relative;
+  width: 50%;
+}
+.card5:hover .overlay {
      width: 100%;
 
 }
@@ -83,4 +108,8 @@ width:400px;
 }
 #pandora img {
     margin-top: 50%;
+}
+.outros img {
+    width: 300px;
+    height: auto;
 }
