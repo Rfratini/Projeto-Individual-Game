@@ -2,26 +2,31 @@
     color: #fff;
     margin: 0%;
  }
+ * img {
+    justify-self: center;
+ }
  .container {
-    margin: 5%;
-margin-top: 10vh;
+    margin: 8%;
+margin-top: 10%;
  }
  .container img {
+    display: flex;
     justify-content: center;
  }
  body{
     background-color: #212427;
  }
- nav{
-    background-color: black;
-    margin-top: -10vh;
+ header{
+       background-color: black;
 display: flex;
 justify-content: center;
 width: 100%;
 position: fixed;
 z-index: 10;
+top: 0%;
+left: 0%;
 }
-nav img {
+header img {
 width:400px;
     justify-content: center;
 }

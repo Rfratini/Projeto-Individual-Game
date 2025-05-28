@@ -1,0 +1,26 @@
+*{
+    color: white;
+}
+header{
+    background-color: black;
+display: flex;
+justify-content: center;
+width: 100%;
+position: fixed;
+z-index: 10;
+top: 0%;
+left: 0%;
+}
+header img {
+width:400px;
+    justify-content: center;
+}
+body{
+    background-color: #212427;
+       height: 773px;
+ }
+ .container {
+    margin-top: 10%;
+    margin: 8%;
+ }
+ 
