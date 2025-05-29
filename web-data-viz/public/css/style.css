@@ -1,6 +1,10 @@
 /* Não usar pure white or pure black: https://uxplanet.org/basicdesign-never-use-pure-black-in-typography-36138a3327a6 */
 /* The 4-point grid system: https://medium.com/@sainzkike/controlling-spacing-in-design-systems-multiple-spacing-9bf1afec87f */
-
+body {
+    background-image: url('../Imagens\ para\ site/Backgroundquiz.jpeg');
+    background-repeat: no-repeat;
+    background-size:cover;
+}
 :root {
     --primary-brand-color: #ED145B;
     --secondary-brand-color: #0762C8;
@@ -17,9 +21,6 @@
     --new-black: #212427;
     --new-white: #E8E8E8;
 }
-nav {
-    background-color: black;
-}
 nav img {
     width:400px;
     justify-content: center;
@@ -34,6 +35,7 @@ body {
 }
 
 button {
+    margin-top: 70%;
      color: black;
     font-size:x-large;
 background-color: #c1c1c1;
@@ -50,15 +52,21 @@ border-radius: 36px;
 }
 
 .width-fit-content {
+    margin-top: 10%;
     width: fit-content;
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
 }
 
 .border-primary {
+    margin-top: 50%;
     border: 3px solid var(--new-white);
 }
 
 .border-secondary {
-    border: 1px solid var(--new-white);
+    margin-top: 25%;
+    padding: 15%;
+    border: 0.5px solid rgb(77, 166, 255);
     border-radius: 5px;
 }
 
@@ -87,4 +95,7 @@ border-radius: 36px;
 
 .text-new-gray {
     color: var(--new-gray);
+}
+#pontuacao {
+    display: none;
 }
