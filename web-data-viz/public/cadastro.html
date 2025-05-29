@@ -31,6 +31,8 @@
                 <option value="0">Selecione</option>
                 <option value="M">Masculino</option>
                 <option value="F">Feminino</option>
+                <option value="Y">Outro</option>
+                <option value="X">Prefiro não informar</option>
             </select><br><br>
             <button onclick="cadastrar()" class="botoes" id="btcadastrar">Criar conta</button>
         </div>
@@ -64,6 +66,10 @@
           generoVar = 'Masculino';
         } else if (Genero.value == 'F') {
           generoVar = 'Feminino';
+        } else if (Genero.value == 'Y') {
+          generoVar = 'Outro'
+        } else if (Genero.value == 'X') {
+          generoVar = 'Prefiro não informar'
         }
       }
     }
@@ -90,7 +96,7 @@
           alert("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
 
 
-          window.location = "loginA.html";
+          window.location = "login.html";
         } else {
           throw "Houve um erro ao tentar realizar o cadastro!";
         }
