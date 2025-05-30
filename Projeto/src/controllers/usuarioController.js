@@ -120,5 +120,5 @@ function finaçiar(req, res) {
 module.exports = {
     autenticar,
     cadastrar,
-    quiz
+    // quiz
 }
