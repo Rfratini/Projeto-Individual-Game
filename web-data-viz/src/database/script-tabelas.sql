@@ -26,15 +26,15 @@ constraint QuizFK foreign key (Fkquiz) references quiz(idpergunta),
 Pontuacao decimal(4,2),
 Respusuario char(1)
 );
--- Falta alterar ainda
+
 insert into quiz values
 (1, 'C'),
 (2, 'A'),
 (3, 'B'),
-(4, 'C'),
+(4, 'D'),
 (5, 'C'),
-(6, 'C'),
-(7, 'C'),
+(6, 'A'),
+(7, 'B'),
 (8, 'C'),
-(9, 'C'),
-(10, 'C');
+(9, 'A'),
+(10, 'D');
