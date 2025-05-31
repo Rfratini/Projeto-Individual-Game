@@ -22,20 +22,26 @@ function cadastrar(username, email, senha, genero) {
     return database.executar(instrucaoSql);
 }
 
-function quiz(Fkusuario, Fkquiz, Pontuacao, Respusuario) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", username, email, senha, genero);
-    
-    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
-    //  e na ordem de inserção dos dados.
-    var instrucaoSql = `
-        INSERT INTO usuario (Fkusuario, Fkquiz, Pontuacao, Respusuario) VALUES ('${Fkusuario}', '${Fkusuario}', '${Pontuacao}', '${Respusuario}');
+function salvarquiz(Fkusuario, Fkquiz, Pontuacao, Respusuario) {
+      console.log(`acessando usuario model pra salvar resposta 
+        ID Usuário: ${Fkusuario},
+        ID Pergunta: ${Fkquiz},
+        Pontuação Total da Tentativa: ${Pontuacao}
+        Resposta Selecionada: ${Respusuario}, `);
+
+    // A instrução SQL INSERT agora usa as novas nomenclaturas e os valores passados
+    // 'respusuario' é uma string, por isso precisa de aspas simples na SQL
+   var instrucaoSql = `
+        INSERT INTO tentativa (Fkusuario, Fkquiz, Pontuacao, Respusuario) VALUES ('${Fkusuario}', '${Fkusuario}', '${Pontuacao}', '${Respusuario}');
     `;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+
+    console.log("Executando a instrução SQL para salvar resposta do quiz: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
+    
 }
 
 module.exports = {
     autenticar,
     cadastrar,
-    quiz
+    salvarquiz 
 };
