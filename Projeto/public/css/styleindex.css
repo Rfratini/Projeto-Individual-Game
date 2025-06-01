@@ -1,5 +1,11 @@
+ @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 *{
-    font-family: "Cinzel", serif;
+    font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3vh;
 }
 body {
     background-image: url('../Imagens\ para\ site/Background-index.png');
@@ -22,7 +28,6 @@ width:400px;
 }
 .entrar {
   color: white;
-  font-size: 35px;
   text-align: center;
   background: linear-gradient(
     to right,
@@ -37,7 +42,7 @@ width:400px;
 }
 .criar {
   color: white;
-  font-size: 35px;
+  font-size: 3vh;
   text-align: center;
   background: linear-gradient(
     to right,
