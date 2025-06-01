@@ -23,6 +23,9 @@ nav img {
     width:400px;
     justify-content: center;
 }
+nav{
+    display: flex;
+}
 body {
     color: var(--new-white);
     background-color: rgba(0, 0, 0, 0.959);
@@ -32,17 +35,6 @@ body {
     height: 773px;
 }
 
-button {
-    margin-top: 20%;
-     color: black;
-    font-size:x-large;
-background-color: #c1c1c1;
-padding: 6px;
-border-radius: 36px;
- border-style: solid;
- justify-content: center;
-  box-shadow: 0 4px #999;
-}
 
 .flex-colunar {
     display: flex;
@@ -100,5 +92,16 @@ border-radius: 36px;
     display: none;
 }
 #botoes {
-display: flex;
-flex-direction: row;}
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;}
+      
+ button {
+    color: white;
+    border-radius: 15px;
+    background-color: #2e8bf7c5;
+    padding: 5px;
+    }
+
+    
+    
