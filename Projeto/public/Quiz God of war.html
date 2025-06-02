@@ -183,7 +183,7 @@
         },
     ]
 
-    // variáveis globais    
+    // variáveis globais  
     let numeroDaQuestaoAtual = 0
     let pontuacaoFinal = 0
     let tentativaIncorreta = 0
@@ -230,13 +230,23 @@
         const options = document.getElementsByName("option"); // recupera alternativas no html
 
         let hasChecked = false
-        for (let i = 0; i < options.length; i++) {
-            if (options[i].checked) {
-                hasChecked = true
+      for (let i = 0; i < options.length; i++) {
+    if (options[i].checked) {
+        hasChecked = true;
+        if (i === 0) {
+            selecionado = 'a';
+        } else if (i === 1) {
+            selecionado = 'b';
+        } else if (i === 2) {
+            selecionado = 'c';
+        } else if (i === 3) {
+            selecionado = 'd';
+        }
+                respostas.push(selecionado)
                 break
             }
         }
-
+// routes , controller moddel
         if (!hasChecked) {
             alert("Não há alternativas escolhidas. Escolha uma opção.")
         } else {
