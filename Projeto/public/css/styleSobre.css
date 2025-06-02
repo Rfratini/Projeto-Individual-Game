@@ -131,3 +131,39 @@ footer {
       font-family: "Noto Serif Dives Akuru", serif;
 
 }
+.Conquistas img:hover {
+    transform:  scale(1.1);
+    border:  0.5px solid rgba(0, 153, 255, 0.61);
+    border-radius: 15px;
+     box-shadow:
+        0 0 5px #fff,  
+        0 0 10px #00f, 
+        0 0 13px #00f; 
+}
+#Troféustotais:hover {
+    transform:  scale(1.05);
+    border:  0.5px solid rgba(0, 153, 255, 0.61);
+    border-radius: 15px;
+     box-shadow:
+        0 0 5px #fff,  
+        0 0 10px #00f, 
+        0 0 13px #00f; 
+}
+#qrcode:hover {
+        transform:  scale(1.05);
+    border:  0.5px solid rgba(0, 153, 255, 0.61);
+    border-radius: 15px;
+     box-shadow:
+        0 0 5px #fff,  
+        0 0 10px #00f, 
+        0 0 13px #00f; 
+}
+#maisjogados:hover {
+        transform:  scale(1.05);
+    border:  0.5px solid rgba(0, 153, 255, 0.61);
+    border-radius: 15px;
+     box-shadow:
+        0 0 5px #fff,  
+        0 0 10px #00f, 
+        0 0 13px #00f; 
+}
