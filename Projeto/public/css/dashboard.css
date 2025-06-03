@@ -1,0 +1,123 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Quicksand", sans-serif;
+    scroll-behavior: smooth;
+    color: #fff;
+}
+
+body {
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+
+#containerMain {
+    height: 90vh;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#containerLeft, #containerRight {
+    width: 49.4%;
+    height: 100%;
+}
+
+.containerKPI {
+    display: flex;
+    height: 23%;
+    justify-content: space-between;
+}
+
+.containerGrafico {
+    height: 77%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.KPI {
+    width: 49%;
+    height: 90%;
+    background: #ffffff8c;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+.titleKPI {
+    text-align: center;
+    width: 90%;
+    font-size: 1.3vw;
+
+}
+
+.KPIvalue {
+    font-size: 3vw;
+    font-weight: 600;
+    color: #000000;
+}
+
+.containerCanvas {
+    background: #ffffff8c;
+    border-radius: 10px;
+    height: 49%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.grafico {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90%;
+    width: 100%;
+    padding: 0.5vw 0;
+}
+
+.titleGrafico {
+    font-size: 1.4vw;
+    padding-top: 0.5vw;
+    text-align: center;
+}
+
+
+.containerSubCanvas {
+    height: 100%;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.containerSubCanvas:nth-child(1) {
+    width: 70%;
+}
+
+
+#containerSeta {
+    width: 3vw;
+    height: 3vw;
+    position: absolute;
+    top: 4%;
+    left: 2.5%;
+}
+
+#SetaVoltar {
+    width: 2vw;
+}
+
+
+#containerCanvasRight {
+    flex-direction: row;
+    border-top-right-radius: 0px;
+}

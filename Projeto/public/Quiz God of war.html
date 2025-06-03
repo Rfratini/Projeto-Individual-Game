@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exemplo - Quiz</title>
+    <title>Quiz God of War</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="icon" href="./Imagens para site/logo.ico">
 </head>
@@ -15,7 +15,6 @@
         <nav>
             <a href="Menu.html">
                 <img src="./Imagens para site/LogoGow.png" alt="">
-                aaaaaaaaaaaa
             </a>
         </nav>
         <button id="btnIniciarQuiz" onclick="iniciarQuiz()">INICIAR QUIZ</button>
@@ -75,6 +74,9 @@
             </div>
         </div>
     </div>
+    <!-- <img src="./Imagens para site/Kratos bravo.jpg" alt="" style="width: 150px; height: 150px; border-radius: 15px;">
+    <img src="./Imagens para site/Kratos Feliz.png" alt="" style="width: 150px; height: 150px; border-radius: 15px;">
+    <img src="./Imagens para site/Kratos Neutro.jpeg" alt="" style="width: 150px; height: 150px; border-radius: 15px;" > -->
 </body>
 
 </html>
@@ -355,15 +357,19 @@
         const porcentagemFinalDeAcertos = pontuacaoFinal / quantidadeDeQuestoes
 
         if (porcentagemFinalDeAcertos <= 0.3) {
-            textoParaMensagemFinal = "Você precisa jogar mais God of war!"
+            textoParaMensagemFinal = `Você precisa jogar mais God of war!  <img src="./Imagens para site/Kratos bravo.jpg" alt="" style="width: 150px; height: 150px; border-radius: 15px;">`
+            
             classComCoresParaMensagemFinal = "text-danger-with-bg"
         }
         else if (porcentagemFinalDeAcertos > 0.3 && porcentagemFinalDeAcertos < 0.9) {
-            textoParaMensagemFinal = "Ta sabendo um pouco...    "
+            textoParaMensagemFinal = `Ta sabendo um pouco... 
+      <img src="./Imagens para site/Kratos Neutro.jpeg" alt="" style="width: 150px; height: 150px; border-radius: 15px;">
+             `
+            
             classComCoresParaMensagemFinal = "text-warning-with-bg"
         }
         else if (porcentagemFinalDeAcertos >= 0.9) {
-            textoParaMensagemFinal = "Uau, Você conhece mesmo sobre God of War, parabéns!"
+            textoParaMensagemFinal = `Uau, Você conhece mesmo sobre God of War, parabéns!  <img src="./Imagens para site/Kratos Feliz.png" alt="" style="width: 150px; height: 150px; border-radius: 15px;">`
             classComCoresParaMensagemFinal = "text-success-with-bg"
         }
 

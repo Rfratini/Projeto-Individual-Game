@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpotParking</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div id="containerSeta">
+        <a href="./principal.html"><img src="../assets/icon/setaEsquerda.png" id="SetaVoltar"></a>
+    </div>
+    <main id="containerMain">
+       
+        <div id="containerLeft">
+            <div class="containerKPI">
+                <div class="KPI">
+                    <span class="titleKPI">AA</span>
+                    <span class="KPIvalue">valor</span>
+                </div>
+                <div class="KPI">
+                    <span class="titleKPI">BB</span>
+                    <span class="KPIvalue">Valor</span>
+                </div>
+            </div>
+            <div class="containerGrafico">
+                <div class="containerCanvas">
+                    <span class="titleGrafico">CC</span>
+                    <div class="grafico">
+                        <canvas id="Ocupacao_PHorario"></canvas>
+                    </div>
+                </div>
+                <div class="containerCanvas">
+                    <span class="titleGrafico">CC</span>
+                    <div class="grafico">
+                        <canvas id="Total_Ocup_Disp"></canvas>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div id="containerRight">
+            <div class="containerKPI">
+                <div class="KPI">
+                    <span class="titleKPI">DD</span>
+                    <span class="KPIvalue">valor</span>
+                </div>
+                <div class="KPI">
+                    <span class="titleKPI">EE</span>
+                    <span class="KPIvalue">valor</span>
+                </div>
+            </div>
+            <div class="containerGrafico">
+                <div class="containerCanvas" id="containerCanvasRight">
+                    <div class="containerSubCanvas" id="containerSubCanvas">
+                        <span class="titleGrafico" id="spanSensorEspecifico">B</span>
+                        <div class="grafico">
+                            <canvas id="SensorEspecifico"></canvas>
+                        </div>
+                    </div>
+                    <div class="containerSubCanvas">
+                        <div class="grafico">
+                            <canvas id="OcupAtual_Dispon"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="containerCanvas">
+                    <span class="titleGrafico">A</span>
+                    <div class="grafico">
+                        <canvas id="fluxoTotal"></canvas>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+
+        var selectSensor = document.getElementById("SelectSensor")
+        const dadosSensores = {
+            "sensor 1": [0, 0, 0, 0, 1, 1],
+            "sensor 2": [1, 0, 0, 1, 1, 0],
+            "sensor 3": [1, 1, 1, 0, 0, 1]
+        };
+
+        selectSensor.addEventListener("change", function () {
+            const valorSelect = selectSensor.value;
+            sensoresEspecificos.data.datasets[0].data = dadosSensores[valorSelect];
+            spanSensorEspecifico.innerHTML = `Horário que o ${valorSelect} ficou ocupado`
+            sensoresEspecificos.update();
+        })
+
+        const Ocupacao_PHorario = document.getElementById('Ocupacao_PHorario');
+        const Total_Ocup_Disp = document.getElementById('Total_Ocup_Disp');
+        const SensorEspecifico = document.getElementById('SensorEspecifico');
+        const OcupAtual_Dispon = document.getElementById('OcupAtual_Dispon');
+        const fluxoTotal = document.getElementById('fluxoTotal');
+
+        new Chart(Ocupacao_PHorario, {
+            type: 'line',
+            data: {
+                labels: ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00'],
+                datasets: [{
+                    label: 'Ocupação',
+                    data: [20, 30, 50, 70, 65, 40],
+                    borderColor: '#d17711',
+                    backgroundColor: 'transparent',
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+
+        new Chart(Total_Ocup_Disp, {
+            type: 'bar',
+            data: {
+                labels: ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00'],
+                datasets: [
+                    {
+                        label: 'Vagas disponíveis',
+                        data: [80, 70, 50, 30, 35, 60],
+                        backgroundColor: '#d17711'
+                    },
+                    {
+                        label: 'Ocupadas',
+                        data: [20, 30, 50, 70, 65, 40],
+                        backgroundColor: '#2E2E2E'
+                    }
+
+                ]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 80
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        labels: {
+                            color: '#fff'
+                        }
+                    },
+
+                },
+                responsive: true,
+                scales: {
+                    x: {
+                        stacked: true,
+                    },
+                    y: {
+                        stacked: true
+                    }
+                }
+            }
+        });
+
+
+        const sensoresEspecificos = new Chart(SensorEspecifico, {
+            type: 'line',
+            data: {
+                labels: ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00'],
+                datasets: [{
+                    label: '',
+                    data: dadosSensores["sensor 1"],
+                    borderColor: '#d17711',
+                    backgroundColor: 'transparent',
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                    }
+                }
+            }
+        });
+
+        new Chart(OcupAtual_Dispon, {
+            type: 'doughnut',
+            data: {
+                labels: ['Ocupação Atual', 'Vagas Disponíveis'],
+                datasets: [{
+                    data: [45, 55],
+                    backgroundColor: ['#d17711', '#292927'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                cutout: '70%',
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: '#fff',
+                            boxWidth: 15,
+                            boxHeight: 15,
+                            font: {
+                                size: 12
+                            }
+                        },
+                    }
+                }
+            }
+        });
+
+        new Chart(fluxoTotal, {
+            type: 'bar',
+            data: {
+                labels: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta'],
+                datasets: [{
+                    label: 'Veículos',
+                    data: [80, 150, 200, 250, 300, 350],
+                    backgroundColor: '#d17711'
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

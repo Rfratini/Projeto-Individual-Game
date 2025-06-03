@@ -44,14 +44,13 @@ body {
 .width-fit-content {
     margin-top: 10%;
     width: 80%;
-    height: 40%;
     backdrop-filter: blur(10px);
     background-color: #00000025;
     border-radius: 15px;
 }
 
 .border-primary {
-    margin-top: 50%;
+    margin-top: 25%;
     border: 3px solid var(--new-white);
 }
 
@@ -96,11 +95,21 @@ body {
     flex-direction: row;
     justify-content: space-between;}
       
- button {
+  #btnIniciarQuiz  {
+    margin-top: 65%;
+    margin-left: 25%;
     color: white;
     border-radius: 15px;
     background-color: #2e8bf7c5;
-    padding: 5px;
+    padding: 15px;
+    }
+    button {
+     margin-top: 2%;
+    margin-left: 2%;
+    color: white;
+    border-radius: 15px;
+    background-color: #04346bc5;
+    padding: 8px;
     }
 
     
