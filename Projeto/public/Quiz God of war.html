@@ -79,7 +79,7 @@
 
 </html>
 <script>
-
+    var perguntas = [];
     var respostas = [];
     const listaDeQuestoes = [
         {
@@ -209,7 +209,7 @@
         btnSubmeter.disabled = false
         btnProx.disabled = true
         // btnConcluir.disabled = true
-        btnTentarNovamente.disabled = true
+        // btnTentarNovamente.disabled = true
     }
 
     function preencherHTMLcomQuestaoAtual(index) {
@@ -303,6 +303,7 @@
             if (option.value === respostaQuestaoAtual) {
                 console.log("alternativaCorreta está no componente: " + alternativaCorreta)
                 alternativaCorreta = option.labels[0].id
+
             }
         })
 
@@ -312,6 +313,7 @@
                 document.getElementById(alternativaCorreta).classList.add("text-success-with-bg")
                 pontuacaoFinal++
                 certas++
+                perguntas.push(1);
                 document.getElementById("spanCertas").innerHTML = certas
                 numeroDaQuestaoAtual++
             } else if (option.checked && option.value !== respostaQuestaoAtual) {
@@ -321,6 +323,7 @@
                 document.getElementById(alternativaCorreta).classList.add("text-success-with-bg")
                 tentativaIncorreta++
                 erradas++
+                perguntas.push(0);
                 document.getElementById("spanErradas").innerHTML = erradas
                 numeroDaQuestaoAtual++
             }
@@ -343,6 +346,7 @@
     }
 
     function finalizarJogo() {
+        console.log('Finalizar Jogo chamado!');
         document.getElementById('pontuacao').style.display = "flex"
         document.getElementById('jogo').style.display = "none"
         document.getElementById('btnIniciarQuiz').style.display = "none"
@@ -372,10 +376,58 @@
 
         document.getElementById('jogo').classList.add("text-new-gray")
 
+        console.log('379')
         btnProx.disabled = true
         btnSubmeter.disabled = true
         // btnConcluir.disabled = true
-        btnTentarNovamente.disabled = false
+        console.log('383')
+console.log('385')
+const idDoUsuarioLogado = sessionStorage.ID_USUARIO;
+console.log('387')
+if (!idDoUsuarioLogado) {
+    console.log('389')
+    console.error("ID do usuário não encontrado no sessionStorage. Faça login novamente.");
+    return; }
+    if (!Array.isArray(perguntas) || !Array.isArray(respostas) || perguntas.length === 0 || perguntas.length !== respostas.length) {
+        console.error("Dados de perguntas ou respostas inválidos para envio ao backend. Verifique se 'perguntas' e 'respostas' foram populados corretamente.");
+        console.log("Estado de 'perguntas':", perguntas); // Adicione para depurar
+    console.log("Estado de 'respostas':", respostas); // Adicione para depurar
+    return; // Interrompe a execução se os dados estiverem inválidos
+    }
+    
+console.log('Perguntas:', perguntas, 'Respostas:', respostas);
+for (let i = 0; i < perguntas.length; i++) { // 'perguntas.length' seria o número total de questões
+    let perguntaVar = i + 1; 
+    let respostaVar = respostas[i]; 
+    let acertouVar = perguntas[i] === 1; // Isso resultará em 'true' ou 'false'
+
+    fetch("/usuarios/quiz", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            usuarioServer: idDoUsuarioLogado,
+            perguntaServer: perguntaVar,
+            respostaServer: respostaVar,
+            acertouServer: acertouVar, //  será true/false (boolean)
+        }),
+    })
+    .then(function (resposta) {
+        if (resposta.ok) {
+            console.log(`Resposta para pergunta ${perguntaVar} enviada com sucesso!`);
+        } else {
+            resposta.json().then(errorData => {
+                console.error(`Erro ao enviar resposta para pergunta ${perguntaVar}:`, errorData.message || 'Erro desconhecido');
+            }).catch(() => {
+                console.error(`Erro de rede ou resposta não JSON para pergunta ${perguntaVar}.`);
+            });
+        }
+    })
+    .catch(function (erro) {
+        console.error(`Erro na requisição fetch para pergunta ${perguntaVar}:`, erro);
+    });
+}
 
     }
 </script>

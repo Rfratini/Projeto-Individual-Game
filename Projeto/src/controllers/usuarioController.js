@@ -80,62 +80,48 @@ function cadastrar(req, res) {
     }
 }
 
- async function salvarquiz(req, res) {
-    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    // Fkusuario, Fkquiz, Pontuacao, Respusuario
-    var Fkusuario = req.body.FkusuarioServer;
-    var Fkquiz = req.body.FkquizServer;
-    var Pontuacao = req.body.PontuacaoServer;
-    var Respusuario = req.body.RespusuarioServer;
+ // controllers/usuarioController.js
 
-    // Faça as validações dos valores
-    if (Fkusuario == undefined || Fkquiz == undefined || Respusuario == undefined || !Array.isArray(Respusuario)) {
-        res.status(400).send("Dados do quiz incompletos ou inválidos! Verifique fk_idUsuario, pontuacao e respostasDoUsuario.");
-        return;
-    }  try {
-    
-      // Array para guardar todas as promessas de inserção de respostas
-        const promessasDeInsercao = [];
+async function quiz(req, res) {
+  
+   const fkUsuario = req.body.usuarioServer; 
+    const fkPergunta = req.body.perguntaServer;
+    const respUsuario = req.body.respostaServer; 
+    const acertou = req.body.acertouServer;     
 
-        // Itera sobre cada resposta individual no array
-        for (const resposta of Respusuario) {
-            // Valida se a resposta individual tem os campos necessários
-            if (resposta.Fkquiz == undefined || resposta.Respusuario == undefined) {
-                console.warn("Uma resposta individual dentro do array está incompleta. Pulando:", resposta);
-                continue; // Pula esta resposta e continua para a próxima
-            }
+    if (fkUsuario === undefined || fkPergunta === undefined || respUsuario === undefined || acertou === undefined) {
+       
+        return res.status(400).send("Dados da resposta do quiz incompletos ou inválidos! Verifique usuário, pergunta, resposta e status de acerto.");
+    }
 
-            // Adiciona a promessa de inserção para cada resposta ao array
-            // O model 'salvarRespostaQuiz' será chamado para cada resposta
-            promessasDeInsercao.push(
-                usuarioModel.salvarRespostaQuiz(
-                    Fkusuario,
-                    resposta.Fkquiz,
-                    resposta.Respusuario,
-                    Pontuacao // A pontuação total é enviada para cada registro de resposta
-                )
-            );
-        }
+    try {
+       
+        const resultadoInsert = await usuarioModel.salvarTentativa(
+            fkUsuario,
+            fkPergunta,
+            acertou,
+            respUsuario
+        );
 
-        // Aguarda que todas as operações de inserção no banco de dados sejam concluídas
-        const resultados = await Promise.all(promessasDeInsercao);
-        
-        console.log("Todas as respostas do quiz salvas com sucesso no BD!");
-        // Envia uma resposta de sucesso ao frontend
-        res.status(200).json({ message: "Quiz salvo com sucesso!", resultados: resultados });
+        console.log(`Resposta para pergunta ${fkPergunta} salva com sucesso no BD!`);
+        res.status(200).json({ 
+            message: "Resposta do quiz salva com sucesso!", 
+            idTentativaGerado: resultadoInsert.insertId // Se o driver retornar o ID gerado
+        });
 
     } catch (erro) {
-        // Captura e loga qualquer erro que ocorra durante o processo de salvamento
-        console.error("Erro ao salvar quiz no controller:", erro.sqlMessage || erro.message);
-        // Envia uma resposta de erro detalhada ao frontend
-        res.status(500).json({ error: "Erro ao salvar quiz.", details: erro.sqlMessage || erro.message });
+      
+        console.error("Erro ao salvar resposta do quiz no controller:", erro.sqlMessage || erro.message);
+        res.status(500).json({ 
+            error: "Erro ao salvar resposta do quiz.", 
+            details: erro.sqlMessage || erro.message 
+        });
     }
- }
-    
+}
+
 module.exports = {
     autenticar,
     cadastrar,
-    salvarquiz
-
+    quiz 
 }
 
