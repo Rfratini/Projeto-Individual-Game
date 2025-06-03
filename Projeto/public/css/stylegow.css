@@ -1,19 +1,21 @@
  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
- 
+ @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Dives+Akuru&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+ .descricao {
+    font-size: 2vh;
+    font-family: "Poppins", sans-serif;
+}
+.titulo {
+    font-size: 4vh;
+      font-family: "Noto Serif Dives Akuru", serif;
+}
  * {
     color: #fff;
     margin: 0%;
 }
 * img {
     justify-self: center;
-}
-.container {
-    margin: 8%;
-    margin-top: 10%;
-}
-.container img {
-    display: flex;
-    justify-content: center;
 }
 body{
     background-color: #212427;
@@ -32,14 +34,14 @@ header{
 }
 .conteudo-header {
     font-family: "Cinzel", serif;
-display: flex;      
+    display: flex;      
     flex-direction: column; 
     align-items: center;     
     text-align: center;     
-
+    
 }
 .conteudo-header img{
- width: 150px; 
+    width: 150px; 
     max-width: 100%; 
     height: auto; 
     display: block; 
@@ -50,95 +52,88 @@ display: flex;
     font-size: 1.2em; 
     font-weight: bold; 
 }
-
-.Personagens img {
-    width: 140px;
-   
+.titulo {
+    margin-top: 2%;
 }
-.Personagens {
-    margin-left: 8%;
-    margin-right: 8%;
+.conteudo {
+    margin: 8%;
+    margin-top: 10%;
+}
+.conteudo img {
+    margin-top: 10vh;
+    display: flex;
+    justify-content: center;
+    width: 50vh;
+}
+.container {
+    margin-top: 5%;
     display: flex;
     justify-content: space-between;
+    
 }
-.estrutura img {
-    justify-content: center;
+.container img {
+    margin-top: 0;
+    width: 20vh;
 }
-.introducao p {
-    justify-content: justify;
-} 
-.card3 { 
-    border-radius: 8px;
-   padding: 10px;
+.card {
     background-color: #a64d0d;
-      position: relative;
-  width: 50%;
+    border-radius: 15px;
+    padding-inline: 2vh;
+    align-items: center;
 }
-.card3:hover .overlay {
-     width: 100%;
-
+.container { 
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
 }
-.card4 { 
+.card {
+    position: relative;
+    width: 200px; 
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-   padding: 10px;
-    background-color:#8b1615;
-      position: relative;
-  width: 50%;
 }
-.card4:hover .overlay {
-     width: 100%;
-
-}
-.card5 { 
+.image {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
     border-radius: 8px;
-   padding: 10px;
-    background-color: #336ba5;
-      position: relative;
-  width: 50%;
-}
-.card5:hover .overlay {
-     width: 100%;
-
-}
-.text {
-  color: white;
-  font-size: 20px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  white-space: nowrap;
 }
 .overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: #a64d0d;
-  overflow: hidden;
-  width: 0;
-  height: 100%;
-  transition: .5s ease;
-  border-radius: 14px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #a64d0d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
 }
-#kratos3 img  {
-    height: 80%;
-    margin-top:30%;
-    display: block;
- 
+.card:hover .overlay { 
+    opacity: 1;
 }
-#hercules img {
-    margin-top: 50%;
+.text {
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: start;
+    margin: 10px;
+    font-family: "Montserrat", sans-serif;
 }
-#pandora img {
-    margin-top: 50%;
+.titulocard {
+    color: #f5bf29;
+     font-size: 30px;
 }
-.outros img {
-    width: 300px;
-    height: auto;
-}
+
 footer {
     border-radius: 5px;
     padding: 3%;
@@ -154,6 +149,16 @@ footer {
 #linhafooter {
     margin-top: 0;
 }
+hr {
+height: 1px;
+background-color: #fff;
+width: 95%;
+border-radius: 15px;
+margin-top: 4%;
+margin-left: auto; 
+margin-bottom: 1%;
+    margin-right: auto;
+  }
 #efeitonome {
       color: #e0e0e0; 
     text-decoration: none; 
@@ -166,4 +171,59 @@ footer {
       color: #ffcc00; 
     transform: scale(1.05); 
     text-shadow: 0 0 8px rgba(255, 204, 0, 0.6);
+}
+.sessaogow4 .card {
+    background-color:  #8b1615;
+}
+.sessaogow3 .card {
+    background-color: #a64d0d;
+}
+.sessaogow5 .card {
+    background-color: #336ba5;
+}
+.sessaogow4 .overlay {
+    background-color: #8b1615;
+}
+.sessaogow5 .overlay {
+    background-color: #336ba5;
+}
+.sessaogow4 .titulocard {
+    color: #FFD700;
+     font-size: 30px;
+}
+.sessaogow5 .titulocard {
+    color: #FFA500;
+}
+.outros {
+    display: flex;
+}
+.outros img {
+    width: 20%;
+}
+#LogoGow3:hover {
+        transform:  scale(1.05);
+    border:  0.5px solid rgba(0, 153, 255, 0.61);
+    border-radius: 15px;
+    box-shadow:
+    0 0 5px #fff,           
+    0 0 10px #FFD700,      
+    0 0 13px #FF8C00; 
+}
+#LogoGow4:hover {
+        transform:  scale(1.05);
+    border:  0.5px solid rgba(0, 153, 255, 0.61);
+    border-radius: 15px;
+     box-shadow:
+    0 0 5px #fff,          
+    0 0 10px #DC143C,   
+    0 0 13px #B22222;  
+}
+#LogoGow5:hover {
+        transform:  scale(1.05);
+    border:  0.5px solid rgba(0, 153, 255, 0.61);
+    border-radius: 50px;
+    box-shadow:
+    0 0 5px #fff,           
+    0 0 10px #4169E1,       
+    0 0 13px #00BFFF;
 }

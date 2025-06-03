@@ -10,12 +10,12 @@
 </head>
 
 <body>
-   <header>
-      <div class="conteudo-header">
-        <a class="linklogo" href="index.html"> <img src="./Imagens para site/LogoGow.png" alt=""> 
-          <p>Voltar</p>
-          </a>
-          </div>
+    <header>
+        <div class="conteudo-header">
+            <a class="linklogo" href="index.html"> <img src="./Imagens para site/LogoGow.png" alt="">
+                <p>Voltar</p>
+            </a>
+        </div>
     </header>
     <div class="conteudo-geral">
         <div id="divlogin" class="conteiner">
@@ -31,7 +31,9 @@
         </div>
     </div>
 </body>
+
 </html>
+
 </html>
 <script>
     function entrar() {
@@ -39,7 +41,7 @@
         var senhaVar = ipt_senha.value;
 
         if (emailVar == "" || senhaVar == "") {
-           
+
             alert("Mensagem de erro para todos os campos em branco");
         }
         console.log("FORM LOGIN: ", emailVar);
@@ -68,8 +70,8 @@
                     sessionStorage.ID_USUARIO = json.id;
                     sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
 
-                  
-                        window.location = "Menu.html";
+
+                    window.location = "Menu.html";
                 });
             } else {
 
