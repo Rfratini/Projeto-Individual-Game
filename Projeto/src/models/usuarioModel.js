@@ -66,10 +66,23 @@ function salvarTentativa(fkUsuario, fkPergunta, acertou, respUsuario) {
     console.log("Executando a instrução SQL para salvar tentativa: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
+function notaquiz(fkusuario) {
+    console.log(`Acessando o model para salvar tentativa:
+        ID Usuário: ${fkusuario}`)
+
+    var instrucaoSql = `
+       select b.username, Sum(a.acertou) as 'nota' from tentativa as a join usuario as b on b.idusuario = a.Fkusuario where ${fkusuario} = 1 group by b.username;
+    `;
+
+    console.log("Executando a instrução SQL para salvar tentativa: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 
 
 module.exports = {
      autenticar,
     cadastrar,
-    salvarTentativa
+    salvarTentativa,
+    notaquiz
 };

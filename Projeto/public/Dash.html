@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SpotParking</title>
+    <title>Estatisticas</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +18,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body>
+<body onload="puxarresp()">
     <div id="containerSeta">
         <a href="./Menu.html"><img src="./Imagens para site/LogoSimplificada.png" id="SetaVoltar"></a>
     </div>
@@ -27,59 +27,42 @@
         <div id="containerLeft">
             <div class="containerKPI">
                 <div class="KPI">
-                    <span class="titleKPI">AA</span>
-                    <span class="KPIvalue">valor</span>
+                    <span class="titleKPI">Nota Quiz</span>
+                    <span class="KPIvalue" id="KPI_nota"></span>
                 </div>
                 <div class="KPI">
-                    <span class="titleKPI">BB</span>
+                    <span class="titleKPI">Usuarios que fizeram o quiz</span>
                     <span class="KPIvalue">Valor</span>
                 </div>
             </div>
             <div class="containerGrafico">
                 <div class="containerCanvas">
-                    <span class="titleGrafico">CC</span>
+                    <span class="titleGrafico">Grafico A</span>
                     <div class="grafico">
-                        <canvas id="Ocupacao_PHorario"></canvas>
+                       <canvas id="myChart"></canvas>    <!-- Grafico 1 -->
                     </div>
                 </div>
-                <div class="containerCanvas">
-                    <span class="titleGrafico">CC</span>
-                    <div class="grafico">
-                        <canvas id="Total_Ocup_Disp"></canvas>
-                    </div>
-                </div>
-
+                
             </div>
         </div>
         <div id="containerRight">
             <div class="containerKPI">
                 <div class="KPI">
-                    <span class="titleKPI">DD</span>
-                    <span class="KPIvalue">valor</span>
+                    <span class="titleKPI">Nota media usuarios</span>
+                    <span class="KPIvalue">  C</span>
                 </div>
                 <div class="KPI">
-                    <span class="titleKPI">EE</span>
-                    <span class="KPIvalue">valor</span>
+                    <span class="titleKPI">Gênero mais Frequente entre os Visitantes</span>
+                    <span class="KPIvalue">KPI D</span>
                 </div>
             </div>
             <div class="containerGrafico">
-                <div class="containerCanvas" id="containerCanvasRight">
-                    <div class="containerSubCanvas" id="containerSubCanvas">
-                        <span class="titleGrafico" id="spanSensorEspecifico">B</span>
-                        <div class="grafico">
-                            <canvas id="SensorEspecifico"></canvas>
-                        </div>
-                    </div>
-                    <div class="containerSubCanvas">
-                        <div class="grafico">
-                            <canvas id="OcupAtual_Dispon"></canvas>
-                        </div>
-                    </div>
-                </div>
+                
                 <div class="containerCanvas">
-                    <span class="titleGrafico">A</span>
+                    <span class="titleGrafico">Grafico B</span>
                     <div class="grafico">
-                        <canvas id="fluxoTotal"></canvas>
+                        <!-- grafico -->
+                        <canvas id="myChart2"></canvas>    <!-- Grafico 1 -->
                     </div>
                 </div>
 
@@ -87,172 +70,63 @@
         </div>
     </main>
 
-    <script>
-
-        var selectSensor = document.getElementById("SelectSensor")
-        const dadosSensores = {
-            "sensor 1": [0, 0, 0, 0, 1, 1],
-            "sensor 2": [1, 0, 0, 1, 1, 0],
-            "sensor 3": [1, 1, 1, 0, 0, 1]
-        };
-
-        selectSensor.addEventListener("change", function () {
-            const valorSelect = selectSensor.value;
-            sensoresEspecificos.data.datasets[0].data = dadosSensores[valorSelect];
-            spanSensorEspecifico.innerHTML = `Horário que o ${valorSelect} ficou ocupado`
-            sensoresEspecificos.update();
-        })
-
-        const Ocupacao_PHorario = document.getElementById('Ocupacao_PHorario');
-        const Total_Ocup_Disp = document.getElementById('Total_Ocup_Disp');
-        const SensorEspecifico = document.getElementById('SensorEspecifico');
-        const OcupAtual_Dispon = document.getElementById('OcupAtual_Dispon');
-        const fluxoTotal = document.getElementById('fluxoTotal');
-
-        new Chart(Ocupacao_PHorario, {
-            type: 'line',
-            data: {
-                labels: ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00'],
-                datasets: [{
-                    label: 'Ocupação',
-                    data: [20, 30, 50, 70, 65, 40],
-                    borderColor: '#d17711',
-                    backgroundColor: 'transparent',
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                },
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                }
-            }
-        });
-
-        new Chart(Total_Ocup_Disp, {
-            type: 'bar',
-            data: {
-                labels: ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00'],
-                datasets: [
-                    {
-                        label: 'Vagas disponíveis',
-                        data: [80, 70, 50, 30, 35, 60],
-                        backgroundColor: '#d17711'
-                    },
-                    {
-                        label: 'Ocupadas',
-                        data: [20, 30, 50, 70, 65, 40],
-                        backgroundColor: '#2E2E2E'
-                    }
-
-                ]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        max: 80
-                    }
-                },
-                plugins: {
-                    legend: {
-                        display: true,
-                        labels: {
-                            color: '#fff'
-                        }
-                    },
-
-                },
-                responsive: true,
-                scales: {
-                    x: {
-                        stacked: true,
-                    },
-                    y: {
-                        stacked: true
-                    }
-                }
-            }
-        });
-
-
-        const sensoresEspecificos = new Chart(SensorEspecifico, {
-            type: 'line',
-            data: {
-                labels: ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00'],
-                datasets: [{
-                    label: '',
-                    data: dadosSensores["sensor 1"],
-                    borderColor: '#d17711',
-                    backgroundColor: 'transparent',
-                }]
-            },
-            options: {
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                    }
-                }
-            }
-        });
-
-        new Chart(OcupAtual_Dispon, {
-            type: 'doughnut',
-            data: {
-                labels: ['Ocupação Atual', 'Vagas Disponíveis'],
-                datasets: [{
-                    data: [45, 55],
-                    backgroundColor: ['#d17711', '#292927'],
-                    borderWidth: 0
-                }]
-            },
-            options: {
-                cutout: '70%',
-                plugins: {
-                    legend: {
-                        position: 'bottom',
-                        labels: {
-                            color: '#fff',
-                            boxWidth: 15,
-                            boxHeight: 15,
-                            font: {
-                                size: 12
-                            }
-                        },
-                    }
-                }
-            }
-        });
-
-        new Chart(fluxoTotal, {
-            type: 'bar',
-            data: {
-                labels: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta'],
-                datasets: [{
-                    label: 'Veículos',
-                    data: [80, 150, 200, 250, 300, 350],
-                    backgroundColor: '#d17711'
-                }]
-            },
-            options: {
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                }
-            }
-        });
-    </script>
+    
 </body>
 
 </html>
+<script>
+  const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: [ 'Nota de 0 a 3', 'nota de 4 a 8', 'nota de 8 a 10'],
+      datasets: [{
+        label: 'A',
+        data: [12, 19, 3],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+   const ctx2 = document.getElementById('myChart2');
+
+  new Chart(ctx2, {
+    type: 'bar',
+    data: {
+      labels: [ 'Nota de 0 a 3', 'nota de 4 a 8', 'nota de '],
+      datasets: [{
+        label: 'B',
+        data: [12, 19, 3, 5, 2, 3],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+  function puxarresp() {
+    const id = JSON.parse(sessionStorage.ID_USUARIO)
+    fetch(`/usuarios/${id}/quiz/nota`,{
+        method:'GET'
+    }).then( async function (resposta) {
+        if (resposta.ok) {
+            const dadotentativa = await resposta.json()
+            KPI_nota.innerHTML = dadotentativa[0].nota
+        } 
+    })
+  }
+
+</script>

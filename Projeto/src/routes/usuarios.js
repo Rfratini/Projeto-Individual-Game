@@ -16,4 +16,9 @@ router.post("/quiz", function (req, res) {
    usuarioController.quiz(req, res);
 });
 
+router.get("/:idusuario/quiz/nota", function (req, res) {
+   usuarioController.puxarnota(req, res);
+});
+
+
 module.exports = router;

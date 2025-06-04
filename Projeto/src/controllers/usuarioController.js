@@ -118,10 +118,19 @@ async function quiz(req, res) {
         });
     }
 }
+function puxarnota(req,res) {
+    const id = req.params.idusuario
+    usuarioModel.notaquiz(id).then(function(resposta){
+        if (resposta.length > 0) {
+            res.status(200).json(resposta)
+        }
+    })
+}
 
 module.exports = {
     autenticar,
     cadastrar,
-    quiz 
+    quiz,
+     puxarnota
 }
 
