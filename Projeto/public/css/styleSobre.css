@@ -167,3 +167,6 @@ footer {
         0 0 10px #00f, 
         0 0 13px #00f; 
 }
+#linkinicio:hover {
+ color:#ffcc00;
+}

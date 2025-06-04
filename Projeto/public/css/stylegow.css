@@ -227,3 +227,6 @@ margin-bottom: 1%;
     0 0 10px #4169E1,       
     0 0 13px #00BFFF;
 }
+#linkinicio:hover {
+ color:#ffcc00;
+}
