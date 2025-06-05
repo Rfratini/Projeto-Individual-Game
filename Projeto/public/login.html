@@ -42,7 +42,7 @@
 
         if (emailVar == "" || senhaVar == "") {
 
-            alert("Mensagem de erro para todos os campos em branco");
+            alert("Preencha o login e senha");
         }
         console.log("FORM LOGIN: ", emailVar);
         console.log("FORM SENHA: ", senhaVar);
@@ -74,7 +74,7 @@
                 });
             } else {
 
-                console.log("Houve um erro ao tentar realizar o login!");
+              alert("Login ou senha incorretos");
 
                 resposta.text().then(texto => {
                     console.error(texto);

@@ -161,7 +161,7 @@ function notagrafico(fkusuario) {
         ID Usuário: ${fkusuario}`)
 
     var instrucaoSql = `
-       select b.username, count(a.acertou) as 'acertou' from tentativa as a join usuario as b on b.idusuario = a.Fkusuario where a.Fkusuario = 9 and a.acertou = 1 group by b.username;
+       select b.username, count(a.acertou) as 'acertou' from tentativa as a join usuario as b on b.idusuario = a.Fkusuario where a.Fkusuario = ${fkusuario} and a.acertou = 1 group by b.username;
     `; 
 
     console.log("Executando a instrução SQL para ver qual genero tem mais contas \n" + instrucaoSql);

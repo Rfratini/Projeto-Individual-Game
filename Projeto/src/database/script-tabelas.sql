@@ -39,12 +39,72 @@ INSERT INTO pergunta (pergunta, Resposta) VALUES
 ('Por que a pele de Kratos é toda branca?', 'C'),
 ('Qual era a intenção principal de Odin ao visitar Kratos no início de God of War Ragnarök?', 'A'),
 ('Qual arma Kratos forjou em God of War Ragnarök?', 'D');
-select * from pergunta;
+
 select * from tentativa;
-select a.username, sum(b.Acertou) as 'Nota' from usuario as a join tentativa as b on b.Fkusuario = a.idusuario group by a.username having a.username = 'Maite';
-select * from usuario;
-select a.username, b.Fkpergunta, b.Respusuario from usuario a join tentativa b on b.Fkusuario = a.idusuario;
 
-select a.username, b.Fkpergunta, b.Respusuario from usuario a join tentativa b on b.Fkusuario = a.idusuario where Fkpergunta = 4;
+insert into usuario(username, email, senha, genero) values 
+('Marquin', 'marco.silva@gmail.com', 'marco123', 'Masculino'),
+('Collyzinha', 'nicolly3@gmail.com', 'corinthians', 'Feminino'),
+('Joaozinhogamer', 'jp.soares@gmail.com', 'jpmago', 'Masculino'),
+('Ferbs', 'Fernando.padrao@gmail.com', 'thubis123', 'Masculino'),
+('Fra', 'fra.tini@gmail.com', 'gow123', 'Masculino');
 
-select count(Respusuario) from tentativa where Fkpergunta = 8 and Respusuario = 'b';
+insert into tentativa values
+(1, 1, 1, 'C'),
+(1, 2, 1, 'A'),
+(1, 3, 1, 'B'),
+(1, 4, 1, 'D'),
+(1, 5, 1, 'C'),
+(1, 6, 1, 'A'),
+(1, 7, 1, 'B'),
+(1, 8, 1, 'C'),
+(1, 9, 1, 'A'),
+(1, 10, 1, 'D');
+
+insert into tentativa values
+(2, 1, 0, 'A'),
+(2, 2, 0, 'C'),
+(2, 3, 1, 'B'),
+(2, 4, 1, 'D'),
+(2, 5, 0, 'D'),
+(2, 6, 1, 'A'),
+(2, 7, 1, 'B'),
+(2, 8, 0, 'A'),
+(2, 9, 1, 'A'),
+(2, 10, 0, 'B');
+
+insert into tentativa values
+(3, 1, 1, 'C'),
+(3, 2, 0, 'D'),
+(3, 3, 1, 'B'),
+(3, 4, 0, 'A'),
+(3, 5, 1, 'C'),
+(3, 6, 1, 'A'),
+(3, 7, 0, 'C'),
+(3, 8, 0, 'B'),
+(3, 9, 1, 'A'),
+(3, 10, 1, 'D');
+
+insert into tentativa values
+(4, 1, 0, 'A'),
+(4, 2, 0, 'C'),
+(4, 3, 0, 'D'),
+(4, 4, 0, 'A'),
+(4, 5, 0, 'B'),
+(4, 6, 0, 'C'),
+(4, 7, 1, 'B'),
+(4, 8, 0, 'A'),
+(4, 9, 1, 'A'),
+(4, 10, 0, 'B');
+
+insert into tentativa values
+(5, 1, 0, 'B'),
+(5, 2, 1, 'A'),
+(5, 3, 0, 'C'),
+(5, 4, 0, 'C'),
+(5, 5, 1, 'C'),
+(5, 6, 1, 'A'),
+(5, 7, 0, 'A'),
+(5, 8, 0, 'D'),
+(5, 9, 1, 'A'),
+(5, 10, 1, 'D');
