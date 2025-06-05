@@ -15,6 +15,11 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
+    background-image: url(../Imagens\ para\ site/Backgroundquiz.jpeg);
+     background-repeat: no-repeat;
+    background-size:cover;
+     overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 
@@ -47,7 +52,7 @@ body {
 .KPI {
     width: 49%;
     height: 90%;
-    background: #ffffff8c;
+    background: #1c86ff8c;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -69,7 +74,7 @@ body {
 }
 
 .containerCanvas {
-    background: #ffffff8c;
+    background: #1c86ff8c;
     border-radius: 10px;
     height: 49%;
     display: flex;
