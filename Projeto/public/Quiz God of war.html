@@ -397,13 +397,13 @@
         }
         if (!Array.isArray(perguntas) || !Array.isArray(respostas) || perguntas.length === 0 || perguntas.length !== respostas.length) {
             console.error("Dados de perguntas ou respostas inválidos para envio ao backend. Verifique se 'perguntas' e 'respostas' foram populados corretamente.");
-            console.log("Estado de 'perguntas':", perguntas); // Adicione para depurar
-            console.log("Estado de 'respostas':", respostas); // Adicione para depurar
-            return; // Interrompe a execução se os dados estiverem inválidos
+            console.log("Estado de 'perguntas':", perguntas); 
+            console.log("Estado de 'respostas':", respostas); 
+            return; 
         }
 
         console.log('Perguntas:', perguntas, 'Respostas:', respostas);
-        for (let i = 0; i < perguntas.length; i++) { // 'perguntas.length' seria o número total de questões
+        for (let i = 0; i < perguntas.length; i++) { 
             let perguntaVar = i + 1;
             let respostaVar = respostas[i];
             let acertouVar = perguntas[i] === 1; // Isso resultará em 'true' ou 'false'

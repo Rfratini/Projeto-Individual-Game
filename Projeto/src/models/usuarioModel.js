@@ -67,22 +67,114 @@ function salvarTentativa(fkUsuario, fkPergunta, acertou, respUsuario) {
     return database.executar(instrucaoSql);
 }
 function notaquiz(fkusuario) {
-    console.log(`Acessando o model para salvar tentativa:
+    console.log(`Acessando o model para puxar a nota:
         ID Usuário: ${fkusuario}`)
 
     var instrucaoSql = `
-       select b.username, Sum(a.acertou) as 'nota' from tentativa as a join usuario as b on b.idusuario = a.Fkusuario where ${fkusuario} = 1 group by b.username;
-    `;
+       select b.username, Sum(a.acertou) as 'nota' from tentativa as a join usuario as b on b.idusuario = a.Fkusuario where a.Fkusuario = ${fkusuario} group by b.username;
+    `; 
 
-    console.log("Executando a instrução SQL para salvar tentativa: \n" + instrucaoSql);
+    console.log("Executando a instrução SQL para Ver a nota do usuario \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+function qntusuarios(fkusuario) {
+    console.log(`Acessando o model para fazer select:
+        ID Usuário: ${fkusuario}`)
+
+    var instrucaoSql = `
+       select truncate((count(Respusuario)/10),0) as qnt_pessoas from tentativa;
+    `; 
+
+    console.log("Executando a instrução SQL para ver quantidade de usuarios que fizeram o quiz \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+function puxarntmedia(fkusuario) {
+    console.log(`Acessando o model para fazer select:
+        ID Usuário: ${fkusuario}`)
+
+    var instrucaoSql = `
+       SELECT truncate(AVG(notasusuarios.nota),2) AS notamedia
+FROM ( SELECT  b.username, SUM(a.acertou) AS nota 
+    FROM
+        tentativa AS a
+    JOIN
+        usuario AS b ON b.idusuario = a.Fkusuario
+    GROUP BY
+        b.username 
+) AS notasusuarios;
+    `; 
+
+    console.log("Executando a instrução SQL para ver a nota media no quiz \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+function verificacaogenero(fkusuario) {
+    console.log(`Acessando o model para fazer select:
+        ID Usuário: ${fkusuario}`)
+
+    var instrucaoSql = `
+       SELECT genero, COUNT(idusuario) AS result
+FROM usuario
+GROUP BY genero
+ORDER BY result DESC
+LIMIT 1;
+    `; 
+
+    console.log("Executando a instrução SQL para ver qual genero tem mais contas \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+function selectparaasnotas(fkusuario) {
+    console.log(`Acessando o model para fazer select:
+        ID Usuário: ${fkusuario}`)
+
+    var instrucaoSql = `
+      SELECT
+    CASE
+        WHEN notas_usuarios.nota BETWEEN 0 AND 3 THEN '0 a 3'
+        WHEN notas_usuarios.nota BETWEEN 4 AND 7 THEN '4 a 7'
+        WHEN notas_usuarios.nota BETWEEN 8 AND 10 THEN '8 a 10'
+        ELSE 'Outra Faixa' -- Para notas fora dessas faixas (opcional, mas recomendado)
+    END AS faixa_de_nota,
+    COUNT(notas_usuarios.nota) AS quantidade_de_usuarios
+FROM (
+    SELECT
+        b.idusuario,
+        SUM(a.acertou) AS nota
+    FROM
+        tentativa AS a
+    JOIN
+        usuario AS b ON b.idusuario = a.Fkusuario
+    GROUP BY
+        b.idusuario
+) AS notas_usuarios
+GROUP BY
+    faixa_de_nota
+ORDER BY
+    faixa_de_nota;
+    `; 
+
+    console.log("Executando a instrução SQL para ver a quantidade de notas dentro dos intervalos \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
+function notagrafico(fkusuario) {
+    console.log(`Acessando o model para fazer select:
+        ID Usuário: ${fkusuario}`)
 
+    var instrucaoSql = `
+       select b.username, count(a.acertou) as 'acertou' from tentativa as a join usuario as b on b.idusuario = a.Fkusuario where a.Fkusuario = 9 and a.acertou = 1 group by b.username;
+    `; 
 
+    console.log("Executando a instrução SQL para ver qual genero tem mais contas \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
 module.exports = {
      autenticar,
     cadastrar,
     salvarTentativa,
-    notaquiz
+    notaquiz,
+    qntusuarios,
+    puxarntmedia,
+    verificacaogenero,
+    selectparaasnotas,
+    notagrafico
 };

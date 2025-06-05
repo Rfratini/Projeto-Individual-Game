@@ -20,5 +20,23 @@ router.get("/:idusuario/quiz/nota", function (req, res) {
    usuarioController.puxarnota(req, res);
 });
 
+router.get("/:idusuario/quiz/qnt", function (req, res) {
+   usuarioController.qntusuarios(req, res);
+});
+
+router.get("/:idusuario/quiz/notamedia", function (req, res) {
+   usuarioController.puxarnotamedia(req, res);
+});
+
+router.get("/:idusuario/quiz/maiorgenero", function (req, res) {
+   usuarioController.verificargenero(req, res);
+});
+
+router.get("/:idusuario/quiz/graficonotas", function (req, res) {
+   usuarioController.puxarnotas(req, res);
+});
+router.get("/:idusuario/quiz/graficonotaindividual", function (req, res) {
+   usuarioController.puxarindividual(req, res);
+});
 
 module.exports = router;

@@ -20,8 +20,10 @@
 
 <body onload="puxarresp()">
     <div id="containerSeta">
-        <a href="./Menu.html"><img src="./Imagens para site/LogoSimplificada.png" id="SetaVoltar"></a>
-    </div>
+        <a href="./Menu.html"><img src="./Imagens para site/LogoSimplificada.png" id="SetaVoltar"><br>voltar</a> <br><br>
+ <p><span id="username">Faça o quiz para ver suas estatisticas</span></p>
+      </div>
+
     <main id="containerMain">
        
         <div id="containerLeft">
@@ -31,59 +33,65 @@
                     <span class="KPIvalue" id="KPI_nota"></span>
                 </div>
                 <div class="KPI">
-                    <span class="titleKPI">Usuarios que fizeram o quiz</span>
-                    <span class="KPIvalue">Valor</span>
+                    <span class="titleKPI">Quantidade de usuarios que fizeram o quiz</span>
+                    <span class="KPIvalue" id="qnt_usuariosqfizeramoquiz"></span>
                 </div>
             </div>
             <div class="containerGrafico">
-                <div class="containerCanvas">
-                    <span class="titleGrafico">Grafico A</span>
-                    <div class="grafico">
-                       <canvas id="myChart"></canvas>    <!-- Grafico 1 -->
-                    </div>
+              <div class="containerCanvas">
+                <span class="titleGrafico">Nota detalhada</span>
+                <div class="grafico">
+                  <canvas id="myChart2"></canvas>    <!-- Grafico 1 -->
                 </div>
-                
+              </div>
+              
             </div>
-        </div>
-        <div id="containerRight">
+          </div>
+          <div id="containerRight">
             <div class="containerKPI">
-                <div class="KPI">
-                    <span class="titleKPI">Nota media usuarios</span>
-                    <span class="KPIvalue">  C</span>
-                </div>
-                <div class="KPI">
-                    <span class="titleKPI">Gênero mais Frequente entre os Visitantes</span>
-                    <span class="KPIvalue">KPI D</span>
-                </div>
+              <div class="KPI">
+                <span class="titleKPI">Nota media dos usuarios</span>
+                <span class="KPIvalue" id="ntmedia"></span>
+              </div>
+              <div class="KPI">
+                <span class="titleKPI">Gênero mais Frequente entre os usuarios do site</span>
+                <span class="KPIvalue" id="KPIgenero"></span>
+              </div>
             </div>
             <div class="containerGrafico">
-                
-                <div class="containerCanvas">
-                    <span class="titleGrafico">Grafico B</span>
-                    <div class="grafico">
-                        <!-- grafico -->
-                        <canvas id="myChart2"></canvas>    <!-- Grafico 1 -->
-                    </div>
+              
+              <div class="containerCanvas">
+                <span class="titleGrafico">Nota media dos usuarios</span>
+                <div class="grafico">
+                  <canvas id="myChart"></canvas>    <!-- Grafico 1 -->
+                  <!-- grafico -->
                 </div>
-
+              </div>
+              
             </div>
-        </div>
-    </main>
+          </div>
+        </main>
+        
+        
+      </body>
+      
+      </html>
+      <script>
+  var de0a3 = Number(0)
+  var de4a7 = Number(0)
+  var de8a10 = Number(0)
+  var qntacertos = Number(0)
+  var qnterros = Number(0);
 
-    
-</body>
-
-</html>
-<script>
   const ctx = document.getElementById('myChart');
-
+  let grafico1 =
   new Chart(ctx, {
-    type: 'pie',
+    type: 'doughnut',
     data: {
       labels: [ 'Nota de 0 a 3', 'nota de 4 a 8', 'nota de 8 a 10'],
       datasets: [{
         label: 'A',
-        data: [12, 19, 3],
+        data: [0, 0, 0],
         borderWidth: 1
       }]
     },
@@ -95,16 +103,16 @@
       }
     }
   });
-
-   const ctx2 = document.getElementById('myChart2');
+  const ctx2 = document.getElementById('myChart2');
+  let grafico2 =
 
   new Chart(ctx2, {
-    type: 'bar',
+    type: 'pie',
     data: {
-      labels: [ 'Nota de 0 a 3', 'nota de 4 a 8', 'nota de '],
+      labels: [ 'Acertos', 'Erros'],
       datasets: [{
         label: 'B',
-        data: [12, 19, 3, 5, 2, 3],
+        data: [qntacertos, qnterros],
         borderWidth: 1
       }]
     },
@@ -125,8 +133,76 @@
         if (resposta.ok) {
             const dadotentativa = await resposta.json()
             KPI_nota.innerHTML = dadotentativa[0].nota
+            username.innerHTML = ` <span style="color: #fff">Olá! ${dadotentativa[0].username} </span>`;
+            puxarqnt();
         } 
     })
   }
-
+    function puxarqnt() {
+    const id = JSON.parse(sessionStorage.ID_USUARIO)
+    fetch(`/usuarios/${id}/quiz/qnt`,{
+        method:'GET'
+    }).then( async function (resposta) {
+        if (resposta.ok) {
+            const dadotentativa = await resposta.json()
+            qnt_usuariosqfizeramoquiz.innerHTML = dadotentativa[0].qnt_pessoas
+            puxarntmedia()
+            
+        } 
+    })
+  }
+    function puxarntmedia() {
+    const id = JSON.parse(sessionStorage.ID_USUARIO)
+    fetch(`/usuarios/${id}/quiz/notamedia`,{
+        method:'GET'
+    }).then( async function (resposta) {
+        if (resposta.ok) {
+            const dadotentativa = await resposta.json()
+            ntmedia.innerHTML =dadotentativa[0].notamedia;
+            puxargenero();
+        } 
+    })
+  }
+    function puxargenero() {
+    const id = JSON.parse(sessionStorage.ID_USUARIO)
+    fetch(`/usuarios/${id}/quiz/maiorgenero`,{
+        method:'GET'
+    }).then( async function (resposta) {
+        if (resposta.ok) {
+            const dadotentativa = await resposta.json()
+            KPIgenero.innerHTML =dadotentativa[0].genero;
+            graficonotass()
+        } 
+    })
+  }
+  function graficonotass() {
+    const id = JSON.parse(sessionStorage.ID_USUARIO)
+    fetch(`/usuarios/${id}/quiz/graficonotas`,{
+        method:'GET'
+    }).then( async function (resposta) {
+        if (resposta.ok) {
+            const dadotentativa = await resposta.json()
+          de0a3 = dadotentativa[0].quantidade_de_usuarios // nota de 0 a 3
+          de4a7 = dadotentativa[1].quantidade_de_usuarios // nota de 4 a 7
+        de8a10 = dadotentativa[2].quantidade_de_usuarios // nota de 8 a 10
+            grafico1.data.datasets[0].data = [de0a3, de4a7, de8a10]
+            grafico1.update();
+            graficonotaindi();
+        } 
+    })
+  }
+  function graficonotaindi() {
+    const id = JSON.parse(sessionStorage.ID_USUARIO)
+    fetch(`/usuarios/${id}/quiz/graficonotaindividual`,{
+        method:'GET'
+    }).then( async function (resposta) {
+        if (resposta.ok) {
+            const dadotentativa = await resposta.json()
+            qntacertos = dadotentativa[0].acertou
+            qnterros = 10 - qntacertos;
+             grafico2.data.datasets[0].data = [qntacertos, qnterros]
+            grafico2.update();
+        } 
+    })
+  }
 </script>

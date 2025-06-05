@@ -126,11 +126,56 @@ function puxarnota(req,res) {
         }
     })
 }
+function qntusuarios(req,res) {
+    const id = req.params.idusuario
+    usuarioModel.qntusuarios(id).then(function(resposta){
+        if (resposta.length > 0) {
+            res.status(200).json(resposta)
+        }
+    })
+}
+function puxarnotamedia(req,res) {
+    const id = req.params.idusuario
+    usuarioModel.puxarntmedia(id).then(function(resposta){
+        if (resposta.length > 0) {
+            res.status(200).json(resposta)
+        }
+    })
+}
+function verificargenero(req,res) {
+    const id = req.params.idusuario
+    usuarioModel.verificacaogenero(id).then(function(resposta){
+        if (resposta.length > 0) {
+            res.status(200).json(resposta)
+        }
+    })
+}
+function puxarnotas(req,res) {
+    const id = req.params.idusuario
+    usuarioModel.selectparaasnotas(id).then(function(resposta){
+        if (resposta.length > 0) {
+            res.status(200).json(resposta)
+        }
+    })
+}
+function puxarindividual(req,res) {
+    const id = req.params.idusuario
+    usuarioModel.notagrafico(id).then(function(resposta){
+        if (resposta.length > 0) {
+            res.status(200).json(resposta)
+        }
+    })
+}
 
 module.exports = {
     autenticar,
     cadastrar,
     quiz,
-     puxarnota
+     puxarnota,
+     qntusuarios,
+     puxarnotamedia,
+     verificargenero,
+     puxarnotas,
+     puxarindividual
 }
 
